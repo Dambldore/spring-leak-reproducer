@@ -12,5 +12,5 @@ It's using the scheduled functionality to call a function oftent to reproduce it
 ## diagnosis
 
 gathered info during reproduction phase:
-* the `.reduce()` seems to be the faulty line
+* the `.reduce()` in the `CommandService` class in line 35 seems to be the faulty line
 * exchanging it with a `.collectList().map { l -> l.sum() }` results in no error thrown
