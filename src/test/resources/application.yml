@@ -1,0 +1,28 @@
+server:
+  port: 8080
+---
+spring:
+  main:
+    web-application-type: reactive
+  netty:
+    leak-detection: paranoid
+  r2dbc:
+    host: localhost
+    port: 5432
+    database: springservice
+    username: springservice
+    password: springservice
+    url: r2dbc:pool:postgresql://${spring.r2dbc.host}:${spring.r2dbc.port}/${spring.r2dbc.database}?minIdle=10&maxSize=50
+  flyway:
+    enabled: true
+    url: jdbc:postgresql://${spring.r2dbc.host}:${spring.r2dbc.port}/${spring.r2dbc.database}
+    user: ${spring.r2dbc.username}
+    password: ${spring.r2dbc.password}
+---
+server:
+  error:
+    include-message: always
+---
+app:
+  scheduling:
+    enable: false
