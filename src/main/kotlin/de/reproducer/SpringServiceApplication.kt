@@ -1,6 +1,7 @@
 package de.reproducer
 
 import de.reproducer.config.SpringServiceProperties
+import io.netty.util.ResourceLeakDetector
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
@@ -10,5 +11,6 @@ import org.springframework.boot.runApplication
 class SpringServiceApplication
 
 fun main(args: Array<String>) {
+    ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.ADVANCED)
     runApplication<SpringServiceApplication>(*args)
 }
